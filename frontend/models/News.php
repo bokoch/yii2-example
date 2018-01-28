@@ -12,11 +12,29 @@ use Yii;
 
 class News {
 
-    public static function getNewsList() {
+    public static function getNewsList($max) {
 
-        $sql = 'SELECT * FROM news WHERE status = 1';
-        return Yii::$app->db->createCommand($sql)->queryAll();
+        $max = intval($max);
 
+        $sql = 'SELECT * FROM news WHERE status = 1 LIMIT '.$max;
+
+        $result =  Yii::$app->db->createCommand($sql)->queryAll();
+
+        if (!empty($result) && is_array($result)) {
+            foreach ($result as &$item) {
+                $item['text'] = Yii::$app->stringHelper->getShort($item['text'], 30);
+            }
+        }
+
+        return $result;
+    }
+
+    public static function getItem($id) {
+        $id = intval($id);
+
+        $sql = "SELECT * FROM news WHERE status = 1 AND id = $id";
+
+        return Yii::$app->db->createCommand($sql)->queryOne();
     }
 
 }
