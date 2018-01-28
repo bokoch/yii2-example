@@ -6,6 +6,6 @@
         </a>
     </h3>
     <p><?php echo $item['text']; ?></p>
-    <br /><br />
+    <hr />
 
 <?php endforeach; ?>

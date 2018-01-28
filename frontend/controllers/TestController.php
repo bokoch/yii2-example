@@ -2,7 +2,6 @@
 
 namespace frontend\controllers;
 
-use Codeception\Test\Test;
 use Yii;
 use yii\web\Controller;
 use frontend\models\News;
@@ -35,7 +34,6 @@ class TestController extends Controller {
             ->setTextBody('Текст')
             ->send();
 
-        var_dump($result);
         die;
     }
 
