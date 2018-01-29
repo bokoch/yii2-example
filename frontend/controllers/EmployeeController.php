@@ -8,18 +8,6 @@ use Yii;
 
 class EmployeeController extends Controller {
 
-    public function actionIndex() {
-
-        $employee1 = new Employee();
-        $employee1->firstName = 'Mykola';
-        $employee1->lastName = 'Bokoch';
-        $employee1->middleName = 'Mykhaylovich';
-        $employee1->salary = 1200;
-
-        echo $employee1['salary'];
-
-    }
-
     public function actionRegister() {
         $model = new Employee();
         $model->scenario = Employee::SCENARIO_EMPLOYEE_REGISTER;
