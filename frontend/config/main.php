@@ -53,4 +53,8 @@ return [
         ],
     ],
     'params' => $params,
+    'aliases' => [
+        '@files' => '/var/www/yii2-example/frontend/web/files',
+        '@photos' => '@files/photos'
+    ],
 ];
