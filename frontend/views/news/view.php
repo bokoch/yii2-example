@@ -7,4 +7,4 @@
 </h3>
 <p><?php echo $item['text']; ?></p>
 
-<a href="<?php echo Url::to(['test/index']); ?>" class="btn btn-info">Back</a>
+<a href="<?php echo Url::to(['news/index']); ?>" class="btn btn-info">Back</a>

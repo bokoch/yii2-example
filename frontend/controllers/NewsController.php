@@ -6,14 +6,14 @@ use Yii;
 use yii\web\Controller;
 use frontend\models\News;
 
-class TestController extends Controller {
+class NewsController extends Controller {
 
     public function actionIndex() {
 
         $max = Yii::$app->params['maxNewsInList'];
         $list = News::getNewsList($max);
 
-        return $this->render('test', [
+        return $this->render('index', [
             'list' => $list,
         ]);
     }

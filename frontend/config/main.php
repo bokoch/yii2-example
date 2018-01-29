@@ -44,7 +44,7 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'news' => 'test/index',
-                'news/<id:\d+>' => 'test/view',
+                'news/<id:\d+>' => 'news/view',
                 'subscribe' => 'newsletter/subscribe',
             ],
         ],
