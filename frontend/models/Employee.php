@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use yii\base\Model;
+use Yii;
 
 class Employee extends Model {
 
@@ -33,6 +34,14 @@ class Employee extends Model {
 
     public function save() {
         return true;
+    }
+
+    public function find()
+    {
+
+            $sql = 'SELECT * FROM employee';
+
+        return Yii::$app->db->createCommand($sql)->queryAll();
     }
 
 }
