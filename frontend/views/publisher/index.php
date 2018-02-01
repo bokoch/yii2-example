@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Books';
+$this->title = 'Publishers';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="publisher-index">
@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Book', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Publisher', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -24,9 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'isbn',
-            'date_published',
-            'publisher_id',
+            'date_registered',
+            'identity_number',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -39,11 +39,27 @@ class Author extends \yii\db\ActiveRecord
         ];
     }
 
+    public function rules()
+    {
+        return [
+            [['first_name', 'last_name'], 'required'],
+            [['first_name', 'last_name'], 'string', 'max' => 25],
+            [['birthdate'], 'date', 'format' => 'php:Y-m-d'],
+            [['rating'], 'integer']
+
+        ];
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getBookToAuthors()
     {
         return $this->hasMany(BookToAuthor::className(), ['author_id' => 'id']);
+    }
+
+    public function getFullName()
+    {
+        return $this->first_name . ' ' . $this->last_name;
     }
 }
