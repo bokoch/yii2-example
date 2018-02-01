@@ -24,6 +24,14 @@ class Publisher extends \yii\db\ActiveRecord
         return 'publisher';
     }
 
+    public function rules()
+    {
+        return [
+            [['name', 'date_registered'], 'required'],
+            [['date_registered'], 'date', 'format' => 'php:Y-m-d'],
+        ];
+    }
+
     /**
      * @inheritdoc
      */

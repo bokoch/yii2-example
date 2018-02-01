@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use frontend\controllers\behaviors\AccessBehavior;
 use Yii;
 use frontend\models\Publisher;
 use yii\data\ActiveDataProvider;
@@ -26,6 +27,7 @@ class PublisherController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            AccessBehavior::className(),
         ];
     }
 
@@ -37,6 +39,9 @@ class PublisherController extends Controller
     {
         $dataProvider = new ActiveDataProvider([
             'query' => Publisher::find(),
+            'pagination' => [
+                'pageSize' => 5,
+            ],
         ]);
 
         return $this->render('index', [
