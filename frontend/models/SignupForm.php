@@ -1,8 +1,11 @@
 <?php
 namespace frontend\models;
 
+use Yii;
+use yii\base\Event;
 use yii\base\Model;
 use common\models\User;
+use frontend\models\events\UserRegisterEvent;
 
 /**
  * Signup form
@@ -53,6 +56,15 @@ class SignupForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
         
-        return $user->save() ? $user : null;
+        if ($user->save()) {
+            $event = new UserRegisterEvent();
+            $event->user = $user;
+            $event->subject = 'User successfully registered';
+
+            $user->trigger(User::USER_REGISTERED, $event);
+
+            return $user;
+        }
+        return null;
     }
 }

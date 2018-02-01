@@ -1,6 +1,7 @@
 <?php
 namespace common\models;
 
+use common\component\UserNotificationInterface;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -25,7 +26,12 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+    const USER_REGISTERED = 'user_registered';
 
+    public function init()
+    {
+        $this->on(self::USER_REGISTERED, [Yii::$app->emailService, 'notifyUser']);
+    }
 
     /**
      * @inheritdoc
@@ -185,5 +191,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @return string email
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }

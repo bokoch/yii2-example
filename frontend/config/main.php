@@ -51,6 +51,7 @@ return [
         'stringHelper' => [
             'class' => 'common\component\StringHelper',
         ],
+
     ],
     'params' => $params,
     'aliases' => [
