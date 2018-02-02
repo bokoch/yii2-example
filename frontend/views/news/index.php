@@ -1,11 +1,27 @@
-<?php foreach ($list as $item): ?>
+<?php
 
-    <h3>
-        <a href="<?php echo Yii::$app->urlManager->createUrl(['news/view', 'id' => $item['id']]); ?>">
-            <?php echo $item['title']; ?>
-        </a>
-    </h3>
-    <p><?php echo $item['text']; ?></p>
-    <hr />
+use yii\helpers\Html;
+use yii\grid\GridView;
 
-<?php endforeach; ?>
+/* @var $this yii\web\View */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'News';
+$this->params['breadcrumbs'][] = $this->title;
+?>
+<div class="publisher-index">
+
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?= GridView::widget([
+        'dataProvider' => $dataProvider,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
+            'title',
+            //'text',
+            'status',
+        ],
+    ]); ?>
+</div>

@@ -48,6 +48,12 @@ return [
                 'subscribe' => 'newsletter/subscribe',
             ],
         ],
+        'sphinx' => [
+            'class' => 'yii\sphinx\Connection',
+            'dsn' => 'mysql:host=127.0.0.1;port=9306;dbname=yii2advanced',
+            'username' => 'root',
+            'password' => '1234567890',
+        ],
         'stringHelper' => [
             'class' => 'common\component\StringHelper',
         ],

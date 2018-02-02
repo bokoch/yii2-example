@@ -27,7 +27,7 @@ class NewsList extends Widget
         }
 
         $list = News::getNewsList($max);
-        return $this->render('blockNews', [
+       return $this->render('blockNews', [
             'list' => $list,
         ]);
     }
